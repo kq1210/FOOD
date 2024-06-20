@@ -1,0 +1,49 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+    // Add the dependency for the Google services Gradle plugin
+    id 'com.google.gms.google-services'
+}
+
+android {
+    namespace = "com.example.food"
+    compileSdkVersion 34 // Đặt giá trị cụ thể cho compileSdkVersion
+    ndkVersion "23.1.7779620"  // Đảm bảo phiên bản NDK chính xác hoặc loại bỏ nếu không sử dụng NDK
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId "com.example.food"
+        minSdkVersion 23 // Hoặc phiên bản phù hợp với yêu cầu của bạn
+        targetSdkVersion 34
+        versionCode 1  // Đặt giá trị cụ thể cho versionCode
+        versionName "1.0.0"  // Đặt giá trị cụ thể cho versionName
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            // Signing with the debug keys for now, so flutter run --release works.
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source "../.."
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    // Các dependency khác của bạn
+}
